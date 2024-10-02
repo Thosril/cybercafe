@@ -4,12 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Vérifie si l'utilisateur est connecté
-if (!isset($_SESSION['user_id'])) {
-    echo "Vous devez être connecté pour voir les tournois.";
-    exit; // Arrête l'exécution si l'utilisateur n'est pas connecté
-}
-
 require_once($_SERVER['DOCUMENT_ROOT'] . '/cyber/db.php');
 
 // Récupère tous les tournois depuis la base de données
@@ -46,13 +40,18 @@ if (isset($_GET['success'])) {
             <p>Statut : <?php echo htmlspecialchars($tournoi['statut']); ?></p>
 
             <?php 
+            
+            // Vérifie si l'utilisateur est connecté
+            if (isset($_SESSION['user_id'])) {
+                
             // Vérifie si l'utilisateur est déjà inscrit
             $stmt = $pdo->prepare("SELECT * FROM Inscriptions WHERE utilisateur_id = ? AND tournoi_id = ?");
             $stmt->execute([$_SESSION['user_id'], $tournoi['id']]);
             $deja_inscrit = $stmt->fetch();
-            ?>
+            
+            
 
-            <?php if (!$deja_inscrit): ?>
+            if (!$deja_inscrit): ?>
                 <!-- Formulaire d'inscription -->
                 <form action="../cyber/controllers/inscription_tournoi.php" method="POST">
                     <input type="hidden" name="tournoi_id" value="<?= $tournoi['id'] ?>">
@@ -65,7 +64,7 @@ if (isset($_GET['success'])) {
                     <input type="hidden" name="tournoi_id" value="<?php echo $tournoi['id']; ?>">
                     <button type="submit" name="retirer" onclick="return confirm('Êtes-vous sûr de vouloir vous retirer ?');">Se désinscrire du Tournoi</button>
                 </form>
-            <?php endif; ?>
+            <?php endif; } ?>
         </div>
     <?php endforeach; ?>
 <?php else: ?>
