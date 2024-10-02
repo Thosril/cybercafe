@@ -1,0 +1,236 @@
+/* style.css */
+
+/* Réinitialisation de styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    background-image: url('../images/jeux.webp');
+    background-size: cover; /* Ajuste l'image pour couvrir toute la page */
+    background-position: center; /* Centre l'image */
+    /*background-repeat: no-repeat; /* Empêche l'image de se répéter */ 
+    
+    
+    justify-content: center;
+    align-items: center;
+    
+
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #ffffff;
+}
+
+.css-selector {
+    -o-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
+}
+
+@-o-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* En tête */
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center; /* Centre le texte de la navbar */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0; /* Retire le padding par défaut */
+}
+
+nav ul li {
+    display: inline; /* Aligne les éléments horizontalement */
+    margin: 0 15px; /* Ajoute de l'espace entre les éléments */
+}
+
+nav ul li a {
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Retire le soulignement */
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Souligne au survol */
+}
+
+
+
+
+
+/* Hauteur minimale pour s'assurer que le contenu occupe toute la page */
+html, body {
+    height: 100%; /* Prend toute la hauteur de la fenêtre */
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    flex: 1; /* Permet à la section main de prendre tout l'espace disponible */
+    
+}
+
+/* Container pour gérer la disposition de la page */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Hauteur minimale de la page égale à 100% de la hauteur de la fenêtre */
+    
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+/* Styles pour le contenu principal */
+main {
+    padding: 40px; /* Ajoute de l'espace autour du contenu */
+    margin: 40px 0; /* Crée de l'espace entre le haut et le bas de la page */
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 13px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: #fff;
+
+   
+    margin-left: 23%;
+    margin-right: 23%;
+    
+}
+
+/* Formulaires */
+form {
+    margin-top: 20px;
+}
+
+form input, form button, form select {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background: #505050;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #666;
+}
+
+/* Pied de page */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+h1, h2 {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+
+/* Styles pour le burger menu */
+.burger-menu {
+    display: none; /* Masqué par défaut */
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff; /* Couleur de l'icône */
+    padding: 10px;
+}
+
+/* Styles pour la liste de navigation */
+#nav-list {
+    display: flex; /* Flexbox pour le menu en mode desktop */
+    justify-content: center;
+    list-style-type: none;
+}
+
+#nav-list li {
+    display: inline; /* Les éléments de la liste s'affichent en ligne */
+    margin: 0 15px;
+}
+
+/* Styles pour les écrans plus petits */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block; /* Change l'affichage en colonne sur les petits écrans */
+        margin: 5px 0;
+    }
+    
+    #nav-list {
+        display: none; /* Masque le menu */
+        flex-direction: column; /* Colonne pour le menu en mobile */
+        background: #333; /* Arrière-plan du menu */
+        position: absolute; /* Positionnement absolu */
+        top: 60px; /* Positionner sous le burger menu */
+        left: 0; /* Aligner à gauche */
+        width: 100%; /* Prendre toute la largeur */
+        z-index: 1000; /* Assurez-vous qu'il soit au-dessus des autres éléments */
+    }
+
+    #nav-list.active {
+        display: flex; /* Affiche le menu lorsqu'il est actif */
+    }
+
+    #nav-list li {
+        margin: 10px 0; /* Espacement vertical entre les éléments */
+        text-align: center; /* Centrer le texte */
+    }
+}
+
+
+
+/* Styles pour le menu burger */
+.menu-toggle {
+    display: none; /* Caché par défaut */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: #fff; /* Couleur des barres */
+    margin: 3px 0; /* Espacement entre les barres */
+}
